@@ -1,4 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-import { writable , derived} from "svelte/store";
-export const count = writable(0);
-export const doubleCount = derived(count, (c) => c*2);
+import { writable , type Writable} from "svelte/store";
+import type { IndexMonster} from '../routes/+page'
+
+export const caughtMonsters: Writable<IndexMonster[]> = writable([]);

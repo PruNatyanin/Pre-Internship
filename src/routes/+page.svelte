@@ -5,7 +5,6 @@
     import { generations } from "./generation";
     import { goto } from "$app/navigation";
     import Monster from "./Monster.svelte"
-    import { count } from '$lib/stores'
     //load data from +page
     export let data: PageData;
 
@@ -18,13 +17,15 @@
     //     alert('count is '+count);
     //     count *= 2;
     // }
-    $: monsterId = $page.url.searchParams.get("monsterId") || '';
-    $: monster = data.monsters.find((monster : IndexMonster) => monster.id === monsterId);
-    // const monsterClick =(monster : IndexMonster) =>{
-    //      monsterId = monster.id;
-    //  }
-    $: monsterId2 = $page.url.searchParams.get("monsterId2") || '';
-    $: monster2 = data.monsters.find((monster : IndexMonster) => monster.id === monsterId2);
+
+    // $: monsterId = $page.url.searchParams.get("monsterId") || '';
+    // $: monster = data.monsters.find((monster : IndexMonster) => monster.id === monsterId);
+    // // const monsterClick =(monster : IndexMonster) =>{
+    // //      monsterId = monster.id;
+    // //  }
+    // $: monsterId2 = $page.url.searchParams.get("monsterId2") || '';
+    // $: monster2 = data.monsters.find((monster : IndexMonster) => monster.id === monsterId2);
+
     const updateSearchParams = (key: string, value: string) => {
         const searchParams = new URLSearchParams($page.url.searchParams);
         searchParams.set(key, value);
@@ -48,7 +49,7 @@
     }
 </script>
 
-{#if monster}
+<!-- {#if monster}
     <Monster monster = {monster}
     updateSearchParams = {updateSearchParams}/>
 {/if}
@@ -56,7 +57,7 @@
 {#if monster}
     <Monster monster = {monster2}
     updateSearchParams = {updateSearchParams}/>
-{/if}
+{/if} -->
 
 <!-- <h1>{monsterId}</h1>
 <h1>{monster?.name}</h1>
@@ -65,7 +66,6 @@
 
 <!-- generation -->
 <div class='flex flex-row flex-wrap justify-center'>
-    <botton on:click={() => count.set($count+1)}>++</botton>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <botton on:click={() => updateSearchParams('generation_id', 'all')}
@@ -100,8 +100,6 @@
 <div class ='flex flex-row flex-wrap justify-center'>
     {#each selectedMonsters as monster (monster.id)}
     <Monster monster = {monster}
-    updateSearchParams = {updateSearchParams}
-    isInteractive = {true}
     />
     {/each}
 </div>
