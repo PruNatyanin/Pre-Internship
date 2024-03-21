@@ -5,6 +5,8 @@
     import { generations } from "./generation";
     import { goto } from "$app/navigation";
     import Monster from "./Monster.svelte"
+    import { caughtMonsters } from "$lib/stores";
+
     //load data from +page
     export let data: PageData;
 
@@ -47,6 +49,14 @@
     const submitSearch = (e: Event) => {
         searchString = form.searchString;
     }
+
+    // $: clickedMonster = '';
+
+    // const setSelected=(mon:string)=>{
+    //     if(mon === clickedMonster) return;
+    //     clickedMonster = mon;
+    //     console.log(clickedMonster)
+    // }
 </script>
 
 <!-- {#if monster}
@@ -66,6 +76,13 @@
 
 <!-- generation -->
 <div class='flex flex-row flex-wrap justify-center'>
+
+    <!-- {#if clickedMonster !==''}
+        <div class="bg-black absolute bg-opacity-30 flex flex-col justify-center items-center h-screen w-screen z-50" on:click={() => clickedMonster = ''}>
+            <p class="text-2xl text-white">{clickedMonster}</p>
+        </div>
+    {/if} -->
+    
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <botton on:click={() => updateSearchParams('generation_id', 'all')}
@@ -99,7 +116,7 @@
 <!-- show pokemon -->
 <div class ='flex flex-row flex-wrap justify-center'>
     {#each selectedMonsters as monster (monster.id)}
-    <Monster monster = {monster}
-    />
+        <Monster monster = {monster}/>
+        <!-- {clickedMonster} {setSelected} -->
     {/each}
 </div>

@@ -10,7 +10,8 @@ export default {
           '1200px' : '1200px',
           '130px' : '130px',
           '200px' : '200px',
-          '70px' : '70px'
+          '70px' : '70px',
+          '39px' : '39px'
         },
         height:{
           '100px' : '100px'
