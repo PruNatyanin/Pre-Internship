@@ -11,9 +11,11 @@ export default {
           '130px' : '130px',
           '200px' : '200px',
           '70px' : '70px',
+          '30px' : '30px',
           '39px' : '39px'
         },
         height:{
+          '30px' : '30px',
           '100px' : '100px'
         },
         border:{

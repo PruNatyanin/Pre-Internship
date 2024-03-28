@@ -16,18 +16,7 @@ export const load = (async({ fetch, url }) => {
     if(generationId == 'all'){
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=2000')
         const json = await response.json() 
-        //create monsters which have name,url,id
         monsterList = json.results
-        // monsters = json.results.map((monster: ApiMonster) => {
-        //     const splitUrl = monster.url.split('/')
-        //     const id  = splitUrl[splitUrl.length - 2]
-        //     return{
-        //         name: monster.name,
-        //         url: monster.url,
-        //         id: id,
-        //         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
-        //     }
-        // })
     }
     else{
         const generationResponse = await fetch(`http://pokeapi.co/api/v2/generation/${generationId}`)
